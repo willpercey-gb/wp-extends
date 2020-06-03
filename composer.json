@@ -1,0 +1,24 @@
+{
+  "name": "uwebpro/wp-extends",
+  "type": "library",
+  "description": "A simple library to extend WP_Post",
+  "keywords": ["wordpress","WordPress", "blog", "uwebpro"],
+  "homepage": "https://github.com/willpercey-gb/wp-extends",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Will Percey",
+      "email": "info@uwebpro.com",
+      "homepage": "https://uwebpro.com/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "classmap": [
+      "Extends"
+    ]
+  }
+}
