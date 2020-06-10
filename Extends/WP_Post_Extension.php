@@ -66,7 +66,9 @@ class WP_Post_Extension
     private function _use(): void
     {
         global $post;
-        $this->the_post = $post;
+        if (!$this->the_post) {
+            $this->the_post = $post;
+        }
     }
 
     private static function instance(): WP_Post_Extension
