@@ -1,11 +1,11 @@
 <?php
 
 
-namespace UWebPro;
+namespace UWebPro\WordPress;
 
 /**
- * Class WP_Post_Extension
- * @package Standard
+ * Class Post
+ * @package UWebPro\WordPress
  *
  * @property int $ID
  * @property string $post_author
@@ -42,10 +42,10 @@ namespace UWebPro;
  * @method array|boolean|object|\WP_Post filter(string $filter)
  * @method array to_array()
  */
-class WP_Post_Extension
+class Post
 {
     /**
-     * @var WP_Post_Extension
+     * @var Post
      */
     private static $instance;
 
