@@ -2,7 +2,7 @@
   "name": "uwebpro/wp-extends",
   "type": "library",
   "description": "A simple library to extend WP_Post",
-  "keywords": ["wordpress","WordPress", "blog", "uwebpro"],
+  "keywords": ["wordpress","WordPress", "blog", "uwebpro", "extend", "WPPost", "WPQuery"],
   "homepage": "https://github.com/willpercey-gb/wp-extends",
   "license": "MIT",
   "authors": [

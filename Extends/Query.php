@@ -1,10 +1,11 @@
 <?php
 
 
-namespace UWebPro;
+namespace UWebPro\WordPress;
+
 /**
  * Class Query
- * @package UWebPro
+ * @package UWebPro\WordPress
  *
  * @property $author
  * @property string $author_name
@@ -81,6 +82,7 @@ namespace UWebPro;
  * @property string $fields
  *
  */
+
 class Query
 {
     private $data;
@@ -151,13 +153,10 @@ class Query
         $this->paged = $pageNo;
     }
 
-    public function get(?array $args = null): \WP_Query
+    public function get(array $args = []): \WP_Query
     {
         $query = array_merge($this->data, $this->query, $args);
 
-        if ($args) {
-            $query = array_merge($args, $query);
-        }
         return new \WP_Query($query);
     }
 }
