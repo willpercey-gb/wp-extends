@@ -153,7 +153,7 @@ class Query
 
     public function get(?array $args = null): \WP_Query
     {
-        $query = array_merge($this->data, $this->query, $args);
+        $query = array_merge($this->data, $this->query);
 
         if ($args) {
             $query = array_merge($args, $query);
