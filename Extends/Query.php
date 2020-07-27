@@ -89,11 +89,16 @@ class Query
 
     private $query = [];
 
-    public function __construct($type = 'post')
+    public function __construct($type = 'post', $getTaxonomy = false)
     {
         $this->orderBy();
         $this->paginate();
         $this->post_type = $type;
+
+        if($getTaxonomy){
+            $taxonomy = array_values(get_taxonomies(['object_type' => [$type]]));
+            $this->taxonomy = $taxonomy ? $taxonomy[0] : null;
+        }
     }
 
     public function __isset($name)
@@ -117,16 +122,21 @@ class Query
        return call_user_func_array(\WP_Query::class, $arguments);
     }
 
-    public function filter($categories, $field = 'slug', $relation = 'AND', $taxonomy = 'category'): Query
+    public function filter($categories, string $queryBy = 'slug', string $relation = 'AND', string $taxonomy = 'category'): Query
     {
         if (!isset($this->query['tax_query'])) {
             $this->query['tax_query'] = [
                 'relation' => $relation,
             ];
         }
+
+        if ($this->taxonomy && $taxonomy === 'category') {
+            $taxonomy = $this->taxonomy;
+        }
+
         $this->query['tax_query'][] = [
             'taxonomy' => $taxonomy,
-            'field' => $field,
+            'field' => $queryBy,
             'terms' => (array)$categories,
         ];
 
@@ -148,9 +158,11 @@ class Query
         return $this;
     }
 
-    public function page($pageNo)
+    public function page($pageNo): Query
     {
         $this->paged = $pageNo;
+
+        return $this;
     }
 
     public function get(array $args = []): \WP_Query
